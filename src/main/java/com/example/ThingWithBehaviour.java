@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.model.Combobulation;
+import com.example.model.CombobulationConfig;
 import com.example.service.CombobulationConvertor;
 import com.example.service.LaunchParser;
 
@@ -13,7 +14,8 @@ public class ThingWithBehaviour {
         this.combobulationConvertor = combobulationConvertor;
     }
 
-    public Combobulation combobulate() {
-        return null;
+    public Combobulation combobulate(String configJson) {
+        CombobulationConfig combobulationConfig = launchParser.parse(configJson);
+        return combobulationConvertor.convert(combobulationConfig);
     }
 }
