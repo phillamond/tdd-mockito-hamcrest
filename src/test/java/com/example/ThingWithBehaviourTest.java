@@ -13,7 +13,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ThingWithBehaviourTest {
@@ -36,12 +38,20 @@ public class ThingWithBehaviourTest {
     public void shouldCombobulateSuccesfully() {
         CombobulationConfig combobulationConfig = new CombobulationConfig();
         String configJson = "{\"some\":\"json\"}";
-        when(launchParser.parse(configJson)).thenReturn(combobulationConfig);
         Combobulation givenCombobulation = new Combobulation();
+
+        // check that dependencies are called with the correct parameters
+        when(launchParser.parse(configJson)).thenReturn(combobulationConfig);
         when(combobulationConvertor.convert(combobulationConfig)).thenReturn(givenCombobulation);
 
+        // invoke the subject under test
         Combobulation actualCombobulation = thing.combobulate(configJson);
 
+        // check invocation interactions with mocked dependencies
+        verify(launchParser, times(1)).parse(configJson);
+        verify(combobulationConvertor, times(1)).convert(combobulationConfig);
+
+        // check that the same instance of a Combobulation is bubbled up by the SUT
         assertThat(actualCombobulation, is(sameInstance(givenCombobulation)));
     }
 }
