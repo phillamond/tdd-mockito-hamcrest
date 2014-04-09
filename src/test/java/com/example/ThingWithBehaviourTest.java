@@ -28,6 +28,7 @@ public class ThingWithBehaviourTest {
 
     @Before
     public void setUp() {
+        // subject under test
         thing = new ThingWithBehaviour(launchParser, combobulationConvertor);
     }
 
