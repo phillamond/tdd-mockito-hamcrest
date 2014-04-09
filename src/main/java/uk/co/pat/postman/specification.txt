@@ -1,0 +1,21 @@
+Postman Pat's Special Delivery Service
+======================================
+
+Postman Pat has been getting very busy! He is inundated with requests to deliver packages at certain times.
+He and his trusty black and white cat Jess need a booking system to be able to manage customer demand. Mrs Goggins
+is no longer able to cope!
+
+Important Information (the business rules!)
+===========================================
+
+Pat runs his normal daily delivery service (with Jess) to Greendale and Pencaster between the hours of 7am and 9am every day.
+This means his Special Delivery Service can only operate between 9am and 4pm, and Pat and Jess take an hour for lunch at 12pm.
+
+Delivery slots are 20 minutes to allow enough time for Pat and Jess to collect packages from Pencaster Mail Centre, deliver it
+and then return to the mail centre for the next package.
+
+Requirement
+===========
+
+A programmatic interface that provide the necessary behaviour to make delivery bookings, taking into account the business rules
+set out above.
