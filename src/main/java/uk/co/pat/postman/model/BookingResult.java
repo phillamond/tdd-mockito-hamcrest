@@ -11,8 +11,4 @@ public class BookingResult {
         this.name = name;
         this.address = address;
     }
-
-    public boolean isSuccessful() {
-        return false;
-    }
 }
